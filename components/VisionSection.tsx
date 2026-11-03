@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function VisionSection() {
@@ -29,13 +30,13 @@ export default function VisionSection() {
             </p>
 
             <div className="pt-2">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#E31E27E8] hover:bg-[#E31E27] text-white font-bold uppercase text-xs sm:text-sm tracking-wider rounded transition-all shadow-md active:scale-95"
               >
                 <span>Schedule Consultation</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
 

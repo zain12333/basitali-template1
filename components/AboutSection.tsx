@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle, Phone, MessageSquare, Wrench, Shield, ArrowRight } from 'lucide-react';
 import { CLIENT_INFO } from '@/lib/data';
 
@@ -124,19 +125,19 @@ export default function AboutSection() {
 
             {/* Action buttons - always single row */}
             <div className="pt-2 flex items-center gap-3 sm:gap-4">
-              <a
-                href="#services"
+              <Link
+                href="/services"
                 className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 bg-white text-[#E31E27] hover:bg-neutral-100 rounded font-bold text-[11px] sm:text-sm tracking-wide uppercase transition-all shadow-md active:scale-95 whitespace-nowrap"
               >
                 <span>Explore Services</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 bg-black/40 hover:bg-black/60 border border-white/60 text-white rounded font-bold text-[11px] sm:text-sm tracking-wide uppercase transition-all shadow-sm active:scale-95 whitespace-nowrap"
               >
                 <span>Free Quote &amp; Survey</span>
-              </a>
+              </Link>
             </div>
 
           </div>

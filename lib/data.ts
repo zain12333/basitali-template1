@@ -116,7 +116,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     description: 'Functional, elegant vertical blinds, zebra blinds, and sunscreen roller shades providing superior solar control and privacy.',
     details: 'Smooth operating track systems engineered for wide aluminum windows, sliding patio doors, and executive glass offices.',
     specs: ['Blackout and solar-screen fabric choices', 'UV fade-resistant polyester vanes', 'Motorized remote control options', 'Custom made to exact window frame sizes'],
-    thumbnail: '/assets/aistudio/image_4e455762.png',
+    thumbnail: '/assets/service/vertical blinds/beige-signature-pvc-vertical-blinds-cozy.webp',
     category: 'residential'
   },
   {
@@ -125,7 +125,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     description: 'Striking building facades and spider glass system installations engineered with exceptional structural integrity and weather tightness.',
     details: 'Full exterior glass envelope systems for commercial plazas, auto dealerships, and corporate headquarters across Lahore.',
     specs: ['Heavy architectural structural glazing', 'Grade 316 stainless steel spider arms', 'Double glazed Low-E units', 'Seismic and wind pressure certified'],
-    thumbnail: '/assets/aistudio/image_3fd3ab96.png',
+    thumbnail: '/assets/service/Curtain-wall/archg-20261010-193015-7462db.jpg',
     popular: true,
     category: 'commercial'
   },

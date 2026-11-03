@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { X, CheckCircle2, MessageSquare, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { CLIENT_INFO, SERVICES_DATA } from '@/lib/data';
 
@@ -258,13 +259,13 @@ export default function ServicesSection() {
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp Inquiry</span>
               </a>
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 onClick={() => setSelectedService(null)}
                 className="w-full sm:w-auto py-3 px-6 bg-[#E31E27] hover:bg-[#c91820] text-white rounded font-bold text-xs sm:text-sm text-center uppercase tracking-wider transition-colors shadow-sm"
               >
                 Book Free Survey
-              </a>
+              </Link>
             </div>
           </div>
         </div>

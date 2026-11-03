@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { PROJECTS_DATA, ProjectItem } from '@/lib/data';
 import { Search, X, MapPin, Layers, MessageSquare, Phone } from 'lucide-react';
 
@@ -32,12 +33,6 @@ export default function ProjectsSection() {
   const handleSeeMore = () => {
     setAnimating(true);
     setVisibleCount((prev) => Math.min(prev + 6, filteredProjects.length));
-    setTimeout(() => setAnimating(false), 600);
-  };
-
-  const handleSeeAll = () => {
-    setAnimating(true);
-    setVisibleCount(filteredProjects.length);
     setTimeout(() => setAnimating(false), 600);
   };
 
@@ -123,12 +118,12 @@ export default function ProjectsSection() {
             >
               See More Projects
             </button>
-            <button
-              onClick={handleSeeAll}
-              className="px-8 py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded transition-all shadow-md active:scale-95 cursor-pointer"
+            <Link
+              href="/projects"
+              className="px-8 py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded transition-all shadow-md active:scale-95"
             >
               See All Projects
-            </button>
+            </Link>
           </div>
         )}
 

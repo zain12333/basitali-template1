@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2 } from 'lucide-react';
 
 const HERO_IMAGES = [
@@ -80,12 +81,12 @@ export default function Hero() {
             Basit Ali is emerging as a top choice, offering superior aluminum windows, doors, and custom railings for homes and businesses throughout Lahore.
           </p>
 
-          <a
-            href="#services"
+          <Link
+            href="/services"
             className="gsap-scale-up inline-block px-7 py-3 bg-[#E31E27] hover:bg-[#c5131c] text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xs shadow-md transition-all duration-200 active:scale-95"
           >
             OUR SERVICES
-          </a>
+          </Link>
 
           {/* Carousel Dot Indicators */}
           <div className="flex items-center justify-center gap-2 mt-8">

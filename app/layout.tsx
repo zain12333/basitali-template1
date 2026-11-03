@@ -1,5 +1,9 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Outfit } from 'next/font/google';
+import { getSiteConfig } from '@/lib/site-config';
+import { localBusinessJsonLd, faqJsonLd } from '@/lib/seo';
+import { FAQ_DATA } from '@/lib/data';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -16,54 +20,75 @@ const outfit = Outfit({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'Basit Ali Aluminum & Glass Work | Lahore Professional Services',
-  description:
-    'Premier aluminum windows, doors, glass partitions, shower cabins, shop fronts, tempered glass, and 24/7 emergency repair services across Lahore. Call 0320-2740066 for free measurement.',
-  keywords: [
-    'Aluminum Windows Lahore',
-    'Glass Doors Lahore',
-    'Shower Cabins Lahore',
-    'Shop Front Glass Lahore',
-    'Curtain Wall Lahore',
-    'Emergency Glass Repair Lahore',
-    'Basit Ali Aluminum',
-    'Tempered Glass Installation Lahore'
-  ],
-  metadataBase: new URL('https://basitali-template1.vercel.app'),
-  openGraph: {
-    title: 'Basit Ali Aluminum & Glass Work | Lahore',
-    description:
-      'Premium Aluminum Windows, Doors, Glass Partitions, Shower Cabins & Emergency Repair Services in Lahore. Call 0320-2740066.',
-    type: 'website',
-    siteName: 'Basit Ali Aluminum & Glass Work',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1024,
-        height: 1024,
-        alt: 'Basit Ali Aluminum & Glass Work Logo',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Basit Ali Aluminum & Glass Work | Lahore',
-    description:
-      'Professional Aluminum & Glass Services in Lahore. 24/7 Emergency Repairs. Free Measurement & Quotation.',
-    images: ['/og-image.png'],
-  },
-  icons: {
-    icon: '/icon.png',
-    apple: '/apple-icon.png',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const config = getSiteConfig();
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+  return {
+    title: {
+      default: config.siteTitle,
+      template: `%s — ${config.businessName}`,
+    },
+    description: config.metaDescription,
+    applicationName: config.businessName,
+    metadataBase: new URL(config.siteUrl),
+    keywords: [
+      'Aluminum Windows Lahore',
+      'Glass Doors Lahore',
+      'Shower Cabins Lahore',
+      'Shop Front Glass Lahore',
+      'Curtain Wall Lahore',
+      'Emergency Glass Repair Lahore',
+      'Basit Ali Aluminum',
+      'Tempered Glass Installation Lahore',
+    ],
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon.png', type: 'image/png' },
+      ],
+      apple: '/apple-icon.png',
+    },
+    openGraph: {
+      type: 'website',
+      siteName: config.businessName,
+      title: config.siteTitle,
+      description: config.metaDescription,
+      url: config.siteUrl,
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+    verification: {
+      google: 'YOUR_GOOGLE_SEARCH_CONSOLE_CODE',
+    },
+  };
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`scroll-smooth ${plusJakartaSans.variable} ${outfit.variable}`}>
-      <body className="min-h-screen bg-neutral-900 text-neutral-900 antialiased selection:bg-red-600 selection:text-white" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth ${plusJakartaSans.variable} ${outfit.variable}`}
+    >
+      <body
+        className="min-h-screen bg-neutral-900 text-neutral-900 antialiased selection:bg-red-600 selection:text-white"
+        suppressHydrationWarning
+      >
         {children}
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd(FAQ_DATA)),
+          }}
+        />
       </body>
     </html>
   );

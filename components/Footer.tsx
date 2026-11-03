@@ -115,9 +115,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#projects" className="hover:text-white transition-colors">
+                <Link href="/projects" className="hover:text-white transition-colors">
                   Recent Projects Gallery
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/sitemap" className="hover:text-white transition-colors">
+                  Sitemap
+                </Link>
               </li>
               <li>
                 <a href={CLIENT_INFO.whatsAppUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-emerald-400 font-semibold">

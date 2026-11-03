@@ -1,4 +1,6 @@
 import React from 'react';
+import type { Metadata } from 'next';
+import { pageOG } from '@/lib/og-defaults';
 import AccessibilityBar from '@/components/AccessibilityBar';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -14,6 +16,20 @@ import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import ScrollToTop from '@/components/ScrollToTop';
+
+export const metadata: Metadata = {
+  title: 'Basit Ali Aluminum & Glass Work | Lahore Professional Services',
+  description:
+    'Premier aluminum windows, doors, glass partitions, shower cabins, shop fronts, tempered glass, and 24/7 emergency repair services across Lahore. Call 0320-2740066 for free measurement.',
+  openGraph: pageOG({
+    title: 'Basit Ali Aluminum & Glass Work | Lahore Professional Services',
+    description:
+      'Premier aluminum windows, doors, glass partitions, shower cabins, shop fronts, tempered glass, and 24/7 emergency repair services across Lahore. Call 0320-2740066.',
+    url: '/',
+  }),
+  alternates: { canonical: '/' },
+};
+
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col bg-neutral-900 text-neutral-100">
