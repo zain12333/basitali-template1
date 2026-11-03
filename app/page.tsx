@@ -21,12 +21,22 @@ export const metadata: Metadata = {
   title: 'Basit Ali Aluminum & Glass Work | Lahore Professional Services',
   description:
     'Premier aluminum windows, doors, glass partitions, shower cabins, shop fronts, tempered glass, and 24/7 emergency repair services across Lahore. Call 0320-2740066 for free measurement.',
-  openGraph: pageOG({
-    title: 'Basit Ali Aluminum & Glass Work | Lahore Professional Services',
-    description:
-      'Premier aluminum windows, doors, glass partitions, shower cabins, shop fronts, tempered glass, and 24/7 emergency repair services across Lahore. Call 0320-2740066.',
-    url: '/',
-  }),
+  openGraph: {
+    ...pageOG({
+      title: 'Basit Ali Aluminum & Glass Work | Lahore',
+      description:
+        'Premium Aluminum Windows, Doors, Glass Partitions, Shower Cabins & Emergency Repair Services in Lahore. Call 0320-2740066.',
+      url: '/',
+    }),
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1024,
+        height: 1024,
+        alt: 'Basit Ali Aluminum & Glass Work Logo',
+      },
+    ],
+  },
   alternates: { canonical: '/' },
 };
 

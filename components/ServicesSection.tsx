@@ -113,7 +113,7 @@ const FEATURED_SERVICES: DisplayService[] = [
     id: 'stainless-steel-handrails',
     title: 'Stainless Steel Handrails and Cladding:',
     description: 'Enhance safety and aesthetics with our stainless steel handrails and cladding services, providing durability and a sleek look to various applications.',
-    image: '/assets/projects/project_2.png',
+    image: '/assets/projects/project_2.jpg',
     category: 'Architectural Stainless Steel',
     specs: [
       'High-grade 304 and marine-grade 316 stainless steel',
