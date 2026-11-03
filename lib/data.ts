@@ -156,7 +156,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Architectural Stainless Steel Glass Stair Balustrade',
     category: 'Metal Work',
     location: 'DHA Phase 6, Lahore',
-    image: '/assets/projects/project_1.png',
+    image: '/assets/projects/project_1.jpg',
     specs: 'Grade 316 Stainless Steel Handrail · 12mm Toughened Safety Glass',
     description: 'Custom fabricated stainless steel balustrade with beveled tempered glass panels on floating marble staircase.'
   },
@@ -165,7 +165,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Modern Black Aluminum Frame Glass Staircase Enclosure',
     category: 'Aluminum Work',
     location: 'Gulberg III, Lahore',
-    image: '/assets/projects/project_2.png',
+    image: '/assets/projects/project_2.jpg',
     specs: 'Matte Black Thermal Powder-Coated Aluminum · 10mm Clear Tempered Glass',
     description: 'Sleek floor-to-ceiling glass partition wall with integrated acoustic dampening along interior wooden staircase.'
   },
@@ -174,7 +174,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Modern Glass Pergola & Aluminum Terrace Room',
     category: 'Custom Fabrication',
     location: 'Model Town, Lahore',
-    image: '/assets/projects/project_3.png',
+    image: '/assets/projects/project_3.jpg',
     specs: 'Heavy Structural Aluminum Beams · 12mm Heat-Reflective Laminated Glass',
     description: 'Four-season luxury garden conservatory with bi-folding aluminum doors overlooking skyline and lawn.'
   },
@@ -183,7 +183,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Luxury Bathroom Glass Shower & Arched Backlit Mirror',
     category: 'Glass Solutions',
     location: 'Bahria Town Sector C, Lahore',
-    image: '/assets/projects/project_4.png',
+    image: '/assets/projects/project_4.jpg',
     specs: '10mm Anti-Lime Scale Tempered Glass · Matt Black 304 Hinges · Custom LED Mirror',
     description: 'Frameless walk-in glass shower cabin with magnetic watertight seals and bespoke beveled vanity mirror.'
   },
@@ -192,7 +192,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Architectural Patio Sliding Glass Doors with Garden View',
     category: 'Aluminum Work',
     location: 'DHA Phase 5, Lahore',
-    image: '/assets/projects/project_5.png',
+    image: '/assets/projects/project_5.jpg',
     specs: 'Heavy 2.0mm Multi-Track Sliding Aluminum · Double Glazed Low-E Glass',
     description: 'Expansive multi-panel patio sliding system connecting luxury lounge seamlessly to outdoor terrace courtyard.'
   },
@@ -201,7 +201,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Commercial Tempered Glass Entrance Doors with Stainless Trim',
     category: 'Glass Solutions',
     location: 'MM Alam Road, Gulberg, Lahore',
-    image: '/assets/projects/project_6.png',
+    image: '/assets/projects/project_6.jpg',
     specs: '12mm Clear Safety Glass · Heavy-Duty Concealed Floor Springs · Gold PVD Trim',
     description: 'Double swing commercial entrance doors with high-security locks for upscale boutique storefront.'
   },
@@ -210,7 +210,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Modern Glass Balustrade Staircase with Dark Treads',
     category: 'Glass Solutions',
     location: 'Johar Town, Lahore',
-    image: '/assets/projects/project_7.png',
+    image: '/assets/projects/project_7.jpg',
     specs: '12mm Tempered Laminated Glass · Black Anodized Slim Capping Rail',
     description: 'Minimalist glass side-mounted balustrade providing open aesthetic and tested impact protection.'
   },
@@ -219,7 +219,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Glass Elevator Shaft & Double Height Atrium Glazing',
     category: 'Custom Fabrication',
     location: 'Lahore Cantt, Lahore',
-    image: '/assets/projects/project_8.png',
+    image: '/assets/projects/project_8.jpg',
     specs: 'Point-Fixed Spider Glazing · 12mm Laminated Clear Safety Glass',
     description: 'Panoramic glass elevator enclosure and mezzanine atrium railings in private multi-storey residence.'
   },
@@ -228,9 +228,54 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: 'Frameless Glass Swimming Pool Safety Balustrade',
     category: 'Metal Work',
     location: 'Lake City, Lahore',
-    image: '/assets/projects/project_9.png',
+    image: '/assets/projects/project_9.jpg',
     specs: 'Duplex 2205 Stainless Steel Spigots · 12mm Toughened Clear Glass',
     description: 'Corrosion-proof pool perimeter glass barrier ensuring unhindered views with maximum safety.'
+  },
+  {
+    id: 'proj-10',
+    title: 'Decorative Wrought Iron Staircase Railing',
+    category: 'Metal Work',
+    location: 'Garden Town, Lahore',
+    image: '/assets/projects/project_10.jpg',
+    specs: 'Hand-Forged Mild Steel · Powder-Coated Matte Black Finish',
+    description: 'Custom decorative iron staircase railing with geometric patterns and premium powder-coated finish.'
+  },
+  {
+    id: 'proj-11',
+    title: 'Modern Geometric Metal Stair Balustrade',
+    category: 'Metal Work',
+    location: 'Wapda Town, Lahore',
+    image: '/assets/projects/project_11.webp',
+    specs: 'Structural Steel Frame · Contemporary Geometric Design · Anti-Rust Coating',
+    description: 'Contemporary geometric patterned metal balustrade combining modern aesthetics with structural strength.'
+  },
+  {
+    id: 'proj-12',
+    title: 'Industrial Style Iron Railing with Wood Treads',
+    category: 'Custom Fabrication',
+    location: 'Askari 10, Lahore',
+    image: '/assets/projects/project_12.jpg',
+    specs: 'Heavy-Gauge Iron · Hardwood Treads · Epoxy Primer + Matte Finish',
+    description: 'Industrial-style iron staircase railing paired with hardwood treads for a rustic modern look.'
+  },
+  {
+    id: 'proj-13',
+    title: 'Elegant Curved Metal Staircase Design',
+    category: 'Custom Fabrication',
+    location: 'DHA Phase 8, Lahore',
+    image: '/assets/projects/project_13.jpg',
+    specs: 'Curved Mild Steel Structure · Marble Steps · Custom Handrail Profile',
+    description: 'Gracefully curved metal staircase with marble steps and custom-profiled handrails for luxury villa.'
+  },
+  {
+    id: 'proj-14',
+    title: 'Classic Iron Baluster Staircase Railing',
+    category: 'Metal Work',
+    location: 'Faisal Town, Lahore',
+    image: '/assets/projects/project_14.jpg',
+    specs: 'Cast Iron Balusters · Brass Handrail Cap · Protective Clear Coat',
+    description: 'Traditional cast iron baluster staircase with brass-capped handrail delivering timeless elegance.'
   }
 ];
 

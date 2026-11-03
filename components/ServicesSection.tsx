@@ -112,7 +112,7 @@ const FEATURED_SERVICES: DisplayService[] = [
     id: 'stainless-steel-handrails',
     title: 'Stainless Steel Handrails and Cladding:',
     description: 'Enhance safety and aesthetics with our stainless steel handrails and cladding services, providing durability and a sleek look to various applications.',
-    image: '/assets/images/futuristic_basit_ali_lobby_sculpture.png',
+    image: '/assets/projects/project_2.png',
     category: 'Architectural Stainless Steel',
     specs: [
       'High-grade 304 and marine-grade 316 stainless steel',
@@ -128,7 +128,7 @@ export default function ServicesSection() {
   const [showAllServicesModal, setShowAllServicesModal] = useState(false);
 
   return (
-    <section id="services" className="bg-white text-neutral-900 py-16 sm:py-24">
+    <section id="services" className="bg-white text-neutral-900 pt-8 pb-16 sm:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading matching Alba Rose reference screenshot image_70e4eec7.png */}

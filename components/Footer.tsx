@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, MapPin, MessageSquare, ShieldCheck, Heart } from 'lucide-react';
 import { CLIENT_INFO } from '@/lib/data';
@@ -60,39 +61,39 @@ export default function Footer() {
             </p>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/aluminum-windows-doors" className="hover:text-white transition-colors">
                   Aluminum Windows &amp; Doors
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/glass-doors-partitions" className="hover:text-white transition-colors">
                   Glass Doors &amp; Partitions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/shower-cabins" className="hover:text-white transition-colors">
                   Shower Cabins
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/shop-fronts" className="hover:text-white transition-colors">
                   Commercial Shop Fronts
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/office-glass-work" className="hover:text-white transition-colors">
                   Office Glass Work
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/curtain-wall" className="hover:text-white transition-colors">
                   Curtain Wall &amp; Spider Glass
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/vertical-blinds" className="hover:text-white transition-colors">
                   Vertical Blinds
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -104,33 +105,18 @@ export default function Footer() {
             </p>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">
+                <Link href="/about-us" className="hover:text-white transition-colors">
                   About Basit Ali
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services" className="hover:text-white transition-colors">
                   Our Services
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#projects" className="hover:text-white transition-colors">
                   Recent Projects Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#why-us" className="hover:text-white transition-colors">
-                  Why Choose Us
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">
-                  Client Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-white transition-colors">
-                  Frequently Asked Questions
                 </a>
               </li>
               <li>
@@ -187,17 +173,17 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="#about" className="hover:text-neutral-300 transition-colors">
+            <Link href="/about-us" className="hover:text-neutral-300 transition-colors">
               HSE &amp; Safety
-            </a>
+            </Link>
             <span>·</span>
-            <a href="#about" className="hover:text-neutral-300 transition-colors">
+            <Link href="/about-us" className="hover:text-neutral-300 transition-colors">
               Quality Guarantee
-            </a>
+            </Link>
             <span>·</span>
-            <a href="#contact" className="hover:text-neutral-300 transition-colors">
+            <Link href="/services" className="hover:text-neutral-300 transition-colors">
               Lahore Service Area
-            </a>
+            </Link>
           </div>
         </div>
       </div>

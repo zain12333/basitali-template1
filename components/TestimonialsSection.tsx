@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface Review {
@@ -185,23 +185,6 @@ export default function TestimonialsSection() {
 
           {/* Right Block: Carousel Cards with Chevron Navigation */}
           <div className="relative w-full flex-1">
-            {/* Navigation Chevrons */}
-            <button
-              onClick={handlePrev}
-              aria-label="Previous testimonial"
-              className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-300 shadow-md flex items-center justify-center text-neutral-700 hover:text-black hover:border-neutral-400 hover:bg-neutral-50 transition-all cursor-pointer"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={handleNext}
-              aria-label="Next testimonial"
-              className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-neutral-300 shadow-md flex items-center justify-center text-neutral-700 hover:text-black hover:border-neutral-400 hover:bg-neutral-50 transition-all cursor-pointer"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-
             {/* Cards Container */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-4 sm:px-6">
               {/* Card 1 */}

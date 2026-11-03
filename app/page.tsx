@@ -3,6 +3,7 @@ import AccessibilityBar from '@/components/AccessibilityBar';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import AboutSection from '@/components/AboutSection';
+import FacilitiesSection from '@/components/FacilitiesSection';
 import ServicesSection from '@/components/ServicesSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import SafetyPolicyBanner from '@/components/SafetyPolicyBanner';
@@ -28,6 +29,9 @@ export default function HomePage() {
 
       {/* About Basit Ali Section */}
       <AboutSection />
+
+      {/* Core Facilities & Services */}
+      <FacilitiesSection />
 
       {/* 10 Core Services Grid */}
       <ServicesSection />

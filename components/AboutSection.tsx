@@ -30,9 +30,9 @@ export default function AboutSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
 
-          {/* Left Column: Framed Sculpture Image - shows AFTER text on mobile, before on desktop */}
-          <div className="gsap-fade-left lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-full max-w-[390px] aspect-[3.7/5] rounded-md overflow-hidden shadow-2xl border-4 border-white bg-neutral-900 group">
+          {/* Left Column: Image */}
+          <div className="gsap-fade-left lg:col-span-5 flex justify-center lg:justify-start order-1 lg:order-1">
+            <div className="relative w-full max-w-[340px] sm:max-w-[390px] aspect-[4/5] rounded-md overflow-hidden shadow-2xl border-4 border-white bg-neutral-900 group">
               <Image
                 src="/assets/images/futuristic_basit_ali_lobby_sculpture.png"
                 alt="Basit Ali Aluminium & Glass Architectural Sculpture"
@@ -45,8 +45,8 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column: Copy - shows FIRST on mobile */}
-          <div className="gsap-fade-right lg:col-span-7 space-y-4 lg:space-y-5 order-1 lg:order-2">
+          {/* Right Column: Copy - shows AFTER image on mobile */}
+          <div className="gsap-fade-right lg:col-span-7 space-y-4 lg:space-y-5 order-2 lg:order-2">
             <div>
               {/* Spaced "A B O U T" header in white */}
               <p className="gsap-fade-up text-white font-bold tracking-[0.3em] text-sm sm:text-base uppercase mb-1">
@@ -70,13 +70,13 @@ export default function AboutSection() {
             {/* Main body paragraph matching reference text */}
             <p className="text-white text-sm sm:text-base leading-relaxed">
               We are a leading manufacturer, supplier, and installer of architectural aluminum, glazing, stainless steel, and automation works. With a commitment to quality, innovation, and customer satisfaction, we deliver exceptional craftsmanship and reliable solutions for both commercial and residential projects across Lahore.{' '}
-              <button
+              {/* <button
                 type="button"
                 onClick={() => setShowFullStory(!showFullStory)}
                 className="italic underline text-white hover:text-white/80 font-medium inline transition-opacity cursor-pointer focus:outline-none"
               >
                 read more about BASIT ALI
-              </button>
+              </button> */}
             </p>
 
             {/* Expandable story details with complete Lahore service features */}

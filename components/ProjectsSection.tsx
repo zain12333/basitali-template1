@@ -5,9 +5,13 @@ import Image from 'next/image';
 import { PROJECTS_DATA, ProjectItem } from '@/lib/data';
 import { Search, X, MapPin, Layers, MessageSquare, Phone } from 'lucide-react';
 
+const INITIAL_COUNT = 9;
+
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [animating, setAnimating] = useState(false);
 
   const categories = [
     'All',
@@ -22,16 +26,35 @@ export default function ProjectsSection() {
     return proj.category === activeCategory;
   });
 
+  const projectsToShow = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
+
+  const handleSeeMore = () => {
+    setAnimating(true);
+    setVisibleCount((prev) => Math.min(prev + 6, filteredProjects.length));
+    setTimeout(() => setAnimating(false), 600);
+  };
+
+  const handleSeeAll = () => {
+    setAnimating(true);
+    setVisibleCount(filteredProjects.length);
+    setTimeout(() => setAnimating(false), 600);
+  };
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setVisibleCount(INITIAL_COUNT);
+  };
+
   return (
     <section id="projects" className="bg-[#F5F5F5] text-neutral-900 py-16 sm:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Title matching screenshot image_8b82f120.png */}
+
         <h2 className="gsap-text-reveal text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 text-center tracking-tight mb-6 sm:mb-8">
           Basit Ali Recent Projects
         </h2>
 
-        {/* Filter Buttons - single scrollable row */}
+        {/* Filter Buttons */}
         <div className="gsap-fade-up flex items-center justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
@@ -39,7 +62,7 @@ export default function ProjectsSection() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
                 className={`px-3.5 sm:px-5 py-2 text-xs sm:text-sm transition-all duration-150 cursor-pointer rounded-xs border shrink-0 whitespace-nowrap ${
                   isActive
                     ? 'bg-white text-[#E31E27] font-semibold border-neutral-300 shadow-xs'
@@ -52,41 +75,62 @@ export default function ProjectsSection() {
           })}
         </div>
 
-        {/* 3x3 Photo Grid matching screenshot image_8b82f120.png */}
+        {/* Photo Grid */}
         <div className="gsap-stagger-children grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              className="group relative aspect-[1.3/1] overflow-hidden bg-neutral-200 cursor-pointer shadow-2xs hover:shadow-md transition-shadow"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setSelectedProject(project);
-                }
-              }}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                priority
-                referrerPolicy="no-referrer"
-              />
+          {projectsToShow.map((project, idx) => {
+            const isNew = idx >= INITIAL_COUNT && animating;
+            return (
+              <div
+                key={project.id}
+                onClick={() => setSelectedProject(project)}
+                className={`group relative aspect-[1.3/1] overflow-hidden bg-neutral-200 cursor-pointer shadow-2xs hover:shadow-md transition-all ${
+                  isNew ? 'animate-slideInRight' : ''
+                }`}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedProject(project);
+                  }
+                }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  referrerPolicy="no-referrer"
+                />
 
-              {/* Hover overlay with zoom icon */}
-              <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div className="w-10 h-10 rounded-full bg-white text-neutral-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                  <Search className="w-5 h-5 text-[#E31E27]" />
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-white text-neutral-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                    <Search className="w-5 h-5 text-[#E31E27]" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {/* See More / See All Buttons */}
+        {hasMore && (
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
+            <button
+              onClick={handleSeeMore}
+              className="px-8 py-3 bg-white border-2 border-neutral-300 hover:border-neutral-400 text-neutral-800 hover:text-neutral-950 font-bold text-xs sm:text-sm uppercase tracking-wider rounded transition-all shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
+            >
+              See More Projects
+            </button>
+            <button
+              onClick={handleSeeAll}
+              className="px-8 py-3 bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded transition-all shadow-md active:scale-95 cursor-pointer"
+            >
+              See All Projects
+            </button>
+          </div>
+        )}
 
       </div>
 

@@ -79,6 +79,22 @@ html.font-size-xlarge {
   animation: marquee 15s linear infinite;
 }
 
+/* Slide in from right animation for project cards */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.5s ease-out both;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 9px;

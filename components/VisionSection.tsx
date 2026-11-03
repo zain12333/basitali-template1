@@ -39,18 +39,29 @@ export default function VisionSection() {
             </div>
           </div>
 
-          {/* Right Column: Framed photo matching screenshot image_3c54df77.png */}
+          {/* Right Column: Image with decorative offset frame */}
           <div className="gsap-fade-right lg:col-span-6 flex justify-center">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-4 border-[#E31E27] bg-neutral-100 group">
-              <Image
-                src="/assets/images/aluminum_installation_craftsmen_1793184890381.jpg"
-                alt="Basit Ali aluminum technicians precision installing window frame"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
+            <div className="relative w-full max-w-[480px]">
+              {/* Decorative offset golden border frame */}
+              <div className="absolute top-[-12px] right-[-12px] sm:top-[-16px] sm:right-[-16px] w-[70%] h-[70%] border-2 border-[#d4a843] rounded-lg z-0" />
+
+              {/* Main image */}
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl bg-neutral-100 group z-10">
+                <Image
+                  src="/assets/images/aluminum_installation_craftsmen_1793184890381.jpg"
+                  alt="Basit Ali aluminum technicians precision installing window frame"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+
+                {/* Badge overlay */}
+                <div className="absolute bottom-4 right-4 bg-[#E31E27] text-white px-4 py-2.5 rounded-lg shadow-lg z-20">
+                  <p className="text-2xl sm:text-3xl font-black leading-none">10<sup className="text-base">+</sup></p>
+                  <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider mt-0.5">Years of Excellence</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
