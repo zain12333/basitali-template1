@@ -28,15 +28,6 @@ export const metadata: Metadata = {
         'Premium Aluminum Windows, Doors, Glass Partitions, Shower Cabins & Emergency Repair Services in Lahore. Call 0320-2740066.',
       url: '/',
     }),
-    images: [
-      {
-        url: 'https://basitali-template1.vercel.app/og-image.png',
-        width: 1024,
-        height: 1024,
-        alt: 'Basit Ali Aluminum & Glass Work Logo',
-        type: 'image/png',
-      },
-    ],
   },
   alternates: { canonical: '/' },
 };
