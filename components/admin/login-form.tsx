@@ -44,8 +44,9 @@ export default function LoginForm() {
   return (
     <div className="min-h-screen bg-[#f5f3ef] flex flex-col items-center justify-center px-4 py-6 sm:py-0">
       <style jsx global>{`
-        input:invalid, input:-moz-ui-invalid { box-shadow: none; }
-        input:focus-visible { outline: none; }
+        input:invalid, input:-moz-ui-invalid { box-shadow: none !important; outline: none !important; }
+        input:focus-visible { outline: none !important; }
+        input:invalid:focus, input:required:focus, input:required:invalid:focus { border-color: #059669 !important; box-shadow: 0 0 0 2px rgba(5,150,105,0.2) !important; outline: none !important; }
         html::-webkit-scrollbar, body::-webkit-scrollbar { width: 6px; }
         html::-webkit-scrollbar-track, body::-webkit-scrollbar-track { background: #f5f3ef; }
         html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb { background: #c5c0b8; border-radius: 4px; }
