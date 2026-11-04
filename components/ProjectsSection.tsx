@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PROJECTS_DATA, ProjectItem } from '@/lib/data';
-import { Search, X, MapPin, Layers, MessageSquare, Phone } from 'lucide-react';
+import { PROJECTS_DATA } from '@/lib/data';
+import { Search, X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Share2, Download } from 'lucide-react';
 
 const INITIAL_COUNT = 9;
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [animating, setAnimating] = useState(false);
 
@@ -40,6 +40,43 @@ export default function ProjectsSection() {
     setActiveCategory(cat);
     setVisibleCount(INITIAL_COUNT);
   };
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
+
+  const goToPrev = useCallback(() => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex(lightboxIndex === 0 ? filteredProjects.length - 1 : lightboxIndex - 1);
+  }, [lightboxIndex, filteredProjects.length]);
+
+  const goToNext = useCallback(() => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex(lightboxIndex === filteredProjects.length - 1 ? 0 : lightboxIndex + 1);
+  }, [lightboxIndex, filteredProjects.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxIndex, goToPrev, goToNext]);
+
+  const currentProject = lightboxIndex !== null ? filteredProjects[lightboxIndex] : null;
 
   return (
     <section id="projects" className="bg-[#F5F5F5] text-neutral-900 py-16 sm:py-24">
@@ -73,11 +110,12 @@ export default function ProjectsSection() {
         {/* Photo Grid */}
         <div className="gsap-stagger-children grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5">
           {projectsToShow.map((project, idx) => {
+            const globalIndex = filteredProjects.indexOf(project);
             const isNew = idx >= INITIAL_COUNT && animating;
             return (
               <div
                 key={project.id}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => openLightbox(globalIndex)}
                 className={`group relative aspect-[1.3/1] overflow-hidden bg-neutral-200 cursor-pointer shadow-2xs hover:shadow-md transition-all ${
                   isNew ? 'animate-slideInRight' : ''
                 }`}
@@ -86,7 +124,7 @@ export default function ProjectsSection() {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setSelectedProject(project);
+                    openLightbox(globalIndex);
                   }
                 }}
               >
@@ -129,80 +167,80 @@ export default function ProjectsSection() {
 
       </div>
 
-      {/* Lightbox / Project Details Modal */}
-      {selectedProject && (
+      {/* Fullscreen Lightbox */}
+      {currentProject && lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/95 flex flex-col animate-fadeIn"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="project-modal-title"
+          aria-label="Project image preview"
         >
-          <div className="relative w-full max-w-2xl bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-2xl">
+          {/* Top Bar */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 shrink-0">
+            <span className="text-white/80 text-sm sm:text-base font-medium tabular-nums">
+              {lightboxIndex + 1} / {filteredProjects.length}
+            </span>
+
+            <div className="flex items-center gap-1 sm:gap-2">
+              <button
+                onClick={closeLightbox}
+                aria-label="Close lightbox"
+                className="p-2 sm:p-2.5 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+              >
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Image Area */}
+          <div
+            className="flex-1 flex items-center justify-center relative min-h-0 px-2 sm:px-16 pb-4"
+            onClick={closeLightbox}
+          >
+            {/* Prev Arrow */}
             <button
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close project modal"
-              className="absolute top-3 right-3 z-20 p-2 text-neutral-600 hover:text-neutral-900 bg-white/90 hover:bg-white rounded-full transition-colors shadow-md"
+              onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+              aria-label="Previous project"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/60 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all"
             >
-              <X className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
 
-            <div className="relative aspect-[16/10] w-full bg-neutral-100">
+            {/* Image */}
+            <div
+              className="relative w-full h-full max-w-5xl mx-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
+                key={currentProject.id}
+                src={currentProject.image}
+                alt={currentProject.title}
                 fill
-                sizes="(max-width: 1024px) 100vw, 750px"
-                className="object-cover"
+                sizes="100vw"
+                className="object-contain"
+                priority
                 referrerPolicy="no-referrer"
               />
             </div>
 
-            <div className="p-6 sm:p-7">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#E31E27]">
-                  {selectedProject.category}
-                </span>
-                <span className="text-xs text-neutral-500 flex items-center gap-1 font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-[#E31E27]" />
-                  {selectedProject.location}
-                </span>
-              </div>
+            {/* Next Arrow */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goToNext(); }}
+              aria-label="Next project"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white/60 hover:text-white bg-black/30 hover:bg-black/60 rounded-full transition-all"
+            >
+              <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
+            </button>
+          </div>
 
-              <h3 id="project-modal-title" className="text-lg sm:text-xl font-bold text-neutral-900 mb-2">
-                {selectedProject.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-4">
-                {selectedProject.description}
-              </p>
-
-              <div className="bg-neutral-50 p-3 rounded-lg border border-neutral-200 text-xs text-neutral-700 mb-5 flex items-center gap-2">
-                <Layers className="w-4 h-4 text-[#E31E27] shrink-0" />
-                <span>
-                  <strong>Specifications:</strong> {selectedProject.specs}
-                </span>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center gap-3">
-                <a
-                  href={`https://wa.me/923202740066?text=${encodeURIComponent(
-                    `Hello Basit Ali Aluminum, I saw your project "${selectedProject.title}" in ${selectedProject.location}. I need similar work for my site in Lahore. Please share details and pricing.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:flex-1 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Inquiry for Similar Work</span>
-                </a>
-                <a
-                  href="tel:03202740066"
-                  className="w-full sm:w-auto py-2.5 px-5 bg-neutral-900 hover:bg-neutral-800 text-white rounded font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>Call 0320-2740066</span>
-                </a>
-              </div>
-            </div>
+          {/* Bottom Caption */}
+          <div className="shrink-0 px-4 sm:px-6 pb-4 sm:pb-6 text-center">
+            <p className="text-white text-sm sm:text-base font-medium leading-snug max-w-2xl mx-auto">
+              {currentProject.title}
+            </p>
+            <p className="text-white/50 text-xs sm:text-sm mt-1">
+              {currentProject.category} &bull; {currentProject.location}
+            </p>
           </div>
         </div>
       )}
