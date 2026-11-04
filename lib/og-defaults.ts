@@ -17,8 +17,8 @@ export function pageOG(page: {
     images: [
       {
         url: `${config.siteUrl}/logo.jpg`,
-        width: 1024,
-        height: 1024,
+        width: 877,
+        height: 877,
         alt: 'Basit Ali Aluminum & Glass Work Logo',
         type: 'image/jpeg',
       },
