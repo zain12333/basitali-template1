@@ -57,15 +57,19 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: 'en_US',
       images: [
         {
-          url: '/og-image.png',
+          url: `${config.siteUrl}/og-image.png`,
           width: 1024,
           height: 1024,
           alt: 'Basit Ali Aluminum & Glass Work Logo',
+          type: 'image/png',
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary',
+      title: config.siteTitle,
+      description: config.metaDescription,
+      images: [`${config.siteUrl}/og-image.png`],
     },
     verification: {
       google: 'YOUR_GOOGLE_SEARCH_CONSOLE_CODE',

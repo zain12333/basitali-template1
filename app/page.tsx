@@ -30,10 +30,11 @@ export const metadata: Metadata = {
     }),
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://basitali-template1.vercel.app/og-image.png',
         width: 1024,
         height: 1024,
         alt: 'Basit Ali Aluminum & Glass Work Logo',
+        type: 'image/png',
       },
     ],
   },
